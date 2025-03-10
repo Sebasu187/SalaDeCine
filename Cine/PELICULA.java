@@ -4,7 +4,7 @@ public class PELICULA {
     String nombre;
     String idioma;
     String tipo;
-    int duracion;
+    int duracion;//
 
     public PELICULA(String nombre, String idioma, String tipo, int duracion) {
         this.nombre = nombre;
