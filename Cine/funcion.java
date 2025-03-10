@@ -2,8 +2,8 @@ package Cine;
 public class funcion {
     Sala sala;
     String horario;
-    Pelicula paelicula;
-    public funcion(Sala sala, String horario, Pelicula pelicula){
+    PELICULA pelicula;
+    public funcion(Sala sala, String horario, PELICULA pelicula){
         this.sala = sala;
         this.horario = horario;
         this.pelicula = pelicula;
