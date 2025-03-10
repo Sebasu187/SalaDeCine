@@ -62,6 +62,7 @@ public class CineApp {
         peliculas.add(pelicula);
         System.out.println("Película creada: " + pelicula);
     }
+
     public static void asignarFuncion() {
         System.out.println("\n--- Asignar Función ---");
         System.out.println("Películas disponibles:");
@@ -70,16 +71,33 @@ public class CineApp {
         }
         System.out.print("Seleccione una película: ");
         int peliculaIndex = scanner.nextInt() - 1;
-        scanner.nextLine(); 
+        scanner.nextLine();
         if (peliculaIndex < 0 || peliculaIndex >= peliculas.size()) {
             System.out.println("Película inválida");
             return;
-     
+
         }
+
+        System.out.println("Salas disponibles:");
+        for (Sala sala : salas) {
+            System.out.println("Sala " + sala.numero + " (" + sala.tipo + ")");
+        }
+        System.out.print("Seleccione una sala: ");
+        int salaNumero = scanner.nextInt();
+        scanner.nextLine(); // Limpiar el buffer
+
+        Sala sala = salas.get(salaNumero - 1);
+        if (sala.tipo.equals("3D") && !peliculas.get(peliculaIndex).tipo.equals("3D")) {
+            System.out.println("Error: La sala 3 solo puede proyectar películas en 3D.");
+            return;
+        }
+
+        System.out.print("Horario (14:00, 16:30, 19:00): ");
+        String horario = scanner.nextLine();
+
+        Funcion funcion = new Funcion(sala, horario, peliculas.get(peliculaIndex));
+        funciones.add(funcion);
+        System.out.println("Función asignada: " + funcion);
     }
-    
-
-
-
 
 }
