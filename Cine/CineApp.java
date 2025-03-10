@@ -62,5 +62,24 @@ public class CineApp {
         peliculas.add(pelicula);
         System.out.println("Película creada: " + pelicula);
     }
+    public static void asignarFuncion() {
+        System.out.println("\n--- Asignar Función ---");
+        System.out.println("Películas disponibles:");
+        for (int i = 0; i < peliculas.size(); i++) {
+            System.out.println((i + 1) + ". " + peliculas.get(i));
+        }
+        System.out.print("Seleccione una película: ");
+        int peliculaIndex = scanner.nextInt() - 1;
+        scanner.nextLine(); 
+        if (peliculaIndex < 0 || peliculaIndex >= peliculas.size()) {
+            System.out.println("Película inválida");
+            return;
+     
+        }
+    }
+    
+
+
+
 
 }
