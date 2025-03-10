@@ -46,5 +46,21 @@ public class CineApp {
         }
 
     }
-    
+
+    public static void crearPelicula() {
+        System.out.print("Nombre de la película: ");
+        String nombre = scanner.nextLine();
+        System.out.print("Idioma: ");
+        String idioma = scanner.nextLine();
+        System.out.print("Tipo (35mm o 3D): ");
+        String tipo = scanner.nextLine();
+        System.out.print("Duración (minutos): ");
+        int duracion = scanner.nextInt();
+        scanner.nextLine();
+
+        Pelicula pelicula = new Pelicula(nombre, idioma, tipo, duracion);
+        peliculas.add(pelicula);
+        System.out.println("Película creada: " + pelicula);
+    }
+
 }
