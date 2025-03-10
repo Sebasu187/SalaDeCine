@@ -13,10 +13,16 @@ public class PELICULA {
         this.duracion = duracion;
     }
 
+    @Override
+
+    public String toString() {
+        return nombre + " (" + idioma + ", " + tipo + ", " + duracion + " mins)";
+    }
 
 
 
 
 
-    |
+
+    
 }
