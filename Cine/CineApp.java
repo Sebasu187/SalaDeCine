@@ -4,6 +4,7 @@ import java.util.ArrayList;
 import java.util.Scanner;
 
 public class CineApp {
+    //Este codigo fue creado por= Jhonatan esguerra muñoz(Jhonatan-2007), luis fernando gonzales(Luis.nfz) y sebastian ceballos argaez(Sebasu187)
     static ArrayList<PELICULA> peliculas = new ArrayList<PELICULA>();
     static ArrayList<Sala> salas = new ArrayList<Sala>();
     static ArrayList<funcion> funciones = new ArrayList<funcion>();
