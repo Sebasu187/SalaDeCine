@@ -1,4 +1,5 @@
-public calss Sala {
+package Cine;
+public class Sala {
     int numero;
     boolean[][] asientos;
     String tipo;
