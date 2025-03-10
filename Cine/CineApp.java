@@ -1,10 +1,11 @@
 package Cine;
+
 import java.util.ArrayList;
 import java.util.Scanner;
 
 public class CineApp {
     static ArrayList<Pelicula> peliculas = new ArrayList<Pelicula>();
-    static ArrayList<Sala> salas = new ArrayList<Sala>();   
+    static ArrayList<Sala> salas = new ArrayList<Sala>();
     static ArrayList<Funcion> funciones = new ArrayList<Funcion>();
     static Scanner scanner = new Scanner(System.in);
 
@@ -21,15 +22,29 @@ public class CineApp {
 
             System.out.print("Seleccione una opción: ");
             int opcion = scanner.nextInt();
-            scanner.nextLine(); 
-            
+            scanner.nextLine();
 
+            switch (opcion) {
+                case 1:
+                    crearpelicula();
+                    break;
+                case 2:
+                    asignarFuncion();
+                    break;
+                case 3:
+                    venderEntradas();
+                    break;
+                case 4:
+                    System.out.println("saliendo del menu manito");
+                    return;
 
+                default:
+                    System.out.println("Opción inválida");
 
-            
+            }
+
         }
-        
-    }
 
+    }
     
 }
