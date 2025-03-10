@@ -4,9 +4,9 @@ import java.util.ArrayList;
 import java.util.Scanner;
 
 public class CineApp {
-    static ArrayList<Pelicula> peliculas = new ArrayList<Pelicula>();
+    static ArrayList<PELICULA> peliculas = new ArrayList<PELICULA>();
     static ArrayList<Sala> salas = new ArrayList<Sala>();
-    static ArrayList<Funcion> funciones = new ArrayList<Funcion>();
+    static ArrayList<funcion> funciones = new ArrayList<funcion>();
     static Scanner scanner = new Scanner(System.in);
 
     public static void main(String[] args) {
@@ -26,7 +26,7 @@ public class CineApp {
 
             switch (opcion) {
                 case 1:
-                    crearpelicula();
+                    crearPelicula();
                     break;
                 case 2:
                     asignarFuncion();
@@ -58,7 +58,7 @@ public class CineApp {
         int duracion = scanner.nextInt();
         scanner.nextLine();
 
-        Pelicula pelicula = new Pelicula(nombre, idioma, tipo, duracion);
+        PELICULA pelicula = new PELICULA(nombre, idioma, tipo, duracion);
         peliculas.add(pelicula);
         System.out.println("Película creada: " + pelicula);
     }
@@ -95,9 +95,45 @@ public class CineApp {
         System.out.print("Horario (14:00, 16:30, 19:00): ");
         String horario = scanner.nextLine();
 
-        Funcion funcion = new Funcion(sala, horario, peliculas.get(peliculaIndex));
+        funcion funcion = new funcion(sala, horario, peliculas.get(peliculaIndex));
         funciones.add(funcion);
         System.out.println("Función asignada: " + funcion);
     }
+    public static void venderEntradas() {
+        System.out.println("\n--- Vender Entradas ---");
+        System.out.println("Funciones disponibles:");
+        for (int i = 0; i < funciones.size(); i++) {
+            System.out.println((i + 1) + ". " + funciones.get(i));
+        }
+        System.out.print("Seleccione una función: ");
+        int funcionIndex = scanner.nextInt() - 1;
+        scanner.nextLine(); // Limpiar el buffer
 
+        funcion funcion = funciones.get(funcionIndex);
+        funcion.sala.mostrarAsientos();
+
+        System.out.print("Seleccione asientos (ej. A1, B2): ");
+        String[] asientos = scanner.nextLine().split(", ");
+        int total = 0;
+
+        for (String asiento : asientos) {
+            if (funcion.sala.comprarAsiento(asiento)) {
+                char fila = asiento.charAt(0);
+                if (fila >= 'A' && fila <= 'F') {
+                    total += 8000; // General
+                } else if (fila >= 'G' && fila <= 'H') {
+                    total += 12000; // Preferencial
+                } else if (funcion.sala.tipo.equals("3D")) {
+                    total += 10000; // 3D
+                }
+                System.out.println("Asiento " + asiento + " comprado.");
+            } else {
+                System.out.println("Asiento " + asiento + " no disponible.");
+            }
+        }
+
+        System.out.println("Total a pagar: $" + total);
+    }
 }
+
+

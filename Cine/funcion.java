@@ -8,7 +8,7 @@ public class funcion {
         this.horario = horario;
         this.pelicula = pelicula;
     }
-    @override 
+    @Override 
     public String toString(){
         return "Sala" + sala.numero + "-" + horario + "-" + pelicula.nombre;
     }
